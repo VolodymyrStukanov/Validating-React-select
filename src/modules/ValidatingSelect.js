@@ -57,7 +57,6 @@ const ValidatingSelect = ({required = false, inputId, options, value, placeholde
         <>
             <div data-isvalid={isValid}>
                 <Select
-                // className={required === true ? `select-to-valid` : ""}   //class `select-to-valid` is needed for validation
                 inputId={inputId}
                 options={options}
                 value={options !== undefined ? value : []}
@@ -69,7 +68,7 @@ const ValidatingSelect = ({required = false, inputId, options, value, placeholde
                 onFocus={required === true ? handleFocus : ()=>{}}
                 classNames={{
                     control: (state) =>
-                    state.isFocused ? {} : isValid === true ? styles["validity-selector"] : hasBeenFocused === true ? styles["invalid-selector"] : styles["validity-selector"],
+                    state.isFocused ? {} : isValid === true ? styles["validating-selector"] : hasBeenFocused === true ? styles["invalid-selector"] : styles["validating-selector"],
                 }}
                 styles={{
                     menu: (props) => {
