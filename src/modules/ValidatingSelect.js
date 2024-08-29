@@ -57,6 +57,7 @@ const ValidatingSelect = ({required = false, inputId, options, value, placeholde
         <>
             <div data-isvalid={isValid}>
                 <Select
+                // className={required === true ? `select-to-valid` : ""}   //class `select-to-valid` is needed for validation
                 inputId={inputId}
                 options={options}
                 value={options !== undefined ? value : []}
