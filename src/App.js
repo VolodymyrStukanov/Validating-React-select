@@ -5,22 +5,22 @@ function App() {
 
   var users = [{name:"Name1", id:1}, {name:"Name3", id:3}, {name:"Name2", id:2}]
 
-  const [userId1, setUserId1] = useState(undefined);
-  const [userId2, setUserId2] = useState(undefined);
+  const [requiredUserId, setrequiredUserId] = useState(undefined);
+  const [optionalUserId, setOptionalUserId] = useState(undefined);
 
 
-  const handleUser1SelectorChange = (e) => {
+  const handleRequiredUserSelectorChange = (e) => {
     if (e !== undefined) {
-      setUserId1(e.id);
+      setrequiredUserId(e.id);
     } else {
-      setUserId1(undefined);
+      setrequiredUserId(undefined);
     }
   }
-  const handleUser2SelectorChange = (e) => {
+  const handleOptionalUserSelectorChange = (e) => {
     if (e !== undefined) {
-      setUserId2(e.id);
+      setOptionalUserId(e.id);
     } else {
-      setUserId2(undefined);
+      setOptionalUserId(undefined);
     }
   }
 
@@ -30,27 +30,26 @@ function App() {
       <div style={{margin: "2rem", maxWidth: "30%"}}>
           <ValidatingSelect
             required={true}
-            inputId="userSelector2"
+            inputId="RequiredUserSelector"
             getOptionLabel={option => `${option.name}`}
             getOptionValue={option => option.id}
-            onChange={handleUser1SelectorChange}
+            onChange={handleRequiredUserSelectorChange}
             options={users.length > 0 ? users : []}
-            value={users.length > 0 ? users.filter(x => x.id === userId1) : []}
-            placeholder={"Select user"}
+            value={users.length > 0 ? users.filter(x => x.id === requiredUserId) : []}
+            placeholder={"Required"}
             invalidText={"Please choose user"}
           />
       </div>
       
       <div style={{margin: "2rem", maxWidth: "30%"}}>
           <ValidatingSelect
-            inputId="userSelector1"
+            inputId="OptionaluserSelector"
             getOptionLabel={option => `${option.name}`}
             getOptionValue={option => option.id}
-            onChange={handleUser2SelectorChange}
+            onChange={handleOptionalUserSelectorChange}
             options={users.length > 0 ? users : []}
-            value={users.length > 0 ? users.filter(x => x.id === userId2) : []}
-            placeholder={"Select user"}
-            invalidText={"Please choose user"}
+            value={users.length > 0 ? users.filter(x => x.id === optionalUserId) : []}
+            placeholder={"Optional"}
           />
       </div>
 
